@@ -8,11 +8,11 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 /**
- * @title MutantWarplets
- * @notice ERC721 collection for mutated Warplets. Supports origin tracking and a payable mint fee.
+ * @title Halloween Warplet
+ * @notice ERC721 collection for Cutified Warplets. Supports origin tracking and a payable mint fee.
  * @dev Designed for deployment on Base mainnet. Uses ERC721URIStorage for per-token metadata URIs.
  */
-contract MutantWarplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
+contract Halloween Warplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     using Strings for uint256;
 
     struct Origin {
@@ -27,9 +27,9 @@ contract MutantWarplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     uint256 private _nextTokenId = 1;
 
     // Mint fee in wei (default 0.00037 ETH)
-    uint256 public mutationFee = 370_000_000_000_000; // 0.00037 ether
+    uint256 public cutifyingFee = 370_000_000_000_000; // 0.00037 ether
 
-    event Mutated(
+    event Cutified(
         uint256 indexed tokenId,
         address indexed originContract,
         uint256 indexed originTokenId,
@@ -38,10 +38,10 @@ contract MutantWarplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
 
     error IncorrectFee();
 
-    constructor(address initialOwner) ERC721("Mutant Warpletss", "MWPLT") Ownable(initialOwner) {}
+    constructor(address initialOwner) ERC721("Halloween Warplets", "HWPLT") Ownable(initialOwner) {}
 
     /**
-     * @notice Mint a mutated NFT.
+     * @notice Mint a Cutified NFT.
      * @param originContract Address of the original Warplet collection
      * @param originTokenId Token id of the original Warplet (usually user's FID)
      * @param metadataURI Full token URI (ipfs://...)
@@ -52,7 +52,7 @@ contract MutantWarplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
         uint256 originTokenId,
         string calldata metadataURI
     ) external payable nonReentrant returns (uint256 tokenId) {
-        if (msg.value != mutationFee) revert IncorrectFee();
+        if (msg.value != cutifyingFee) revert IncorrectFee();
 
         tokenId = _nextTokenId++;
 
@@ -61,15 +61,15 @@ contract MutantWarplets is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
 
         originOf[tokenId] = Origin({originContract: originContract, originTokenId: originTokenId});
 
-        emit Mutated(tokenId, originContract, originTokenId, msg.sender);
+        emit Cutified(tokenId, originContract, originTokenId, msg.sender);
     }
 
     /**
      * @notice Set the mint fee.
      * @param newFee New fee in wei
      */
-    function setMutationFee(uint256 newFee) external onlyOwner {
-        mutationFee = newFee;
+    function setCutifyingFee(uint256 newFee) external onlyOwner {
+        cutifyingFee = newFee;
     }
 
     /**

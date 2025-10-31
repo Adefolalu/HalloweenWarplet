@@ -1,5 +1,5 @@
 export const mutantWarpletContractAddress =
-  "0x95f020ED303dF076a33a8bF92f045270660f3F63";
+  "0x39795bE11854dfb5DB6ccb9B25e59Ad56DAae990";
 
 export const mutantWarpletsAbi = [
   {
@@ -268,19 +268,6 @@ export const mutantWarpletsAbi = [
     anonymous: false,
     inputs: [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "MetadataUpdate",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: true,
         internalType: "uint256",
         name: "tokenId",
@@ -305,7 +292,20 @@ export const mutantWarpletsAbi = [
         type: "address",
       },
     ],
-    name: "Mutated",
+    name: "Cutified",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "_tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "MetadataUpdate",
     type: "event",
   },
   {
@@ -411,7 +411,7 @@ export const mutantWarpletsAbi = [
         type: "uint256",
       },
     ],
-    name: "setMutationFee",
+    name: "setCutifyingFee",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -504,6 +504,19 @@ export const mutantWarpletsAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "cutifyingFee",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -541,19 +554,6 @@ export const mutantWarpletsAbi = [
         internalType: "bool",
         name: "",
         type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "mutationFee",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
       },
     ],
     stateMutability: "view",
