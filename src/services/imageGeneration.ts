@@ -63,15 +63,16 @@ export class ImageGenerationService {
         // Use custom prompt if provided, otherwise use default
         const promptText =
           customPrompt ||
-          `Transform this character into a HEAVILY MUTATED CYBERPUNK creature version #{n}.
-Keep the base form and recognizable traits of the original character, but make each mutation DISTINCT and UNIQUE:
-- Add varied cybernetic implants, biomechanical limbs, glowing neon patterns, and energy effects.
-- Each version should have a different color scheme, tech style, and mutation intensity.
-- Incorporate unique futuristic enhancements such as plasma conduits, holographic armor, or neural cables.
-- Make the overall design aggressive, high-tech, and alive with cyberpunk energy.
-- Invert the background color or add a slime/fog effect to the background to create a more dramatic atmosphere.
-- Keep the background composition similar but with these atmospheric modifications.
-Style: highly detailed digital illustration, cinematic cyberpunk lighting, 8K resolution, sharp contrast, vivid colors.
+          `Transform this character into an ADORABLY CUTE HALLOWEEN creature version #{n}.
+Keep the base form and recognizable traits, but make the vibe cozy, friendly, and festive:
+- Dress it in charming Halloween motifs: tiny witch hats, bat wings, soft ghost sheets, pumpkin/jack-o'-lantern accents, candy corn patterns, cute cobwebs, tiny stars.
+- Use soft, pastel-forward palettes: warm oranges, lavender purples, mint/slime greens, creamy whites, midnight accents; gentle gradients and plush textures.
+- Emphasize round, kawaii shapes, big expressive eyes, gentle smiles, plush/velvety surfaces, and soft highlights.
+- Add playful magical effects: subtle sparkles, soft glows, floating candy, friendly fireflies, gentle moonlight rim light.
+- Invert the background color or add a soft slime/fog/mist effect to make it feel whimsically spooky but wholesome.
+- Keep the background composition similar to the original, just lightly decorated with Halloween ambiance.
+Art direction: cute illustration style, high-quality digital painting, soft cinematic lighting, gentle volumetric fog, crisp yet soft-edged details. High resolution, clean lines, no text, no watermark, no logos. Avoid horror/gore/realistic violence or anything unsettling.
+Output: a single centered composition featuring the full character with the above Halloween-cute enhancements.
 `;
 
         const contents = [

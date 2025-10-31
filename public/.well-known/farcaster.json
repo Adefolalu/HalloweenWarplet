@@ -10,7 +10,7 @@
     "iconUrl": "https://mwpt.vercel.app/logo.jpg",
     "homeUrl": "https://mwpt.vercel.app",
     "imageUrl": "https://mwpt.vercel.app/splash.jpg",
-    "buttonTitle": "Mutate your Warplet",
+    "buttonTitle": "Cutify your Warplet",
     "splashImageUrl": "https://mwpt.vercel.app/splash.jpg",
     "splashBackgroundColor": "#2596be",
     "webhookUrl": "https://mwpt.vercel.app/api/webhook"

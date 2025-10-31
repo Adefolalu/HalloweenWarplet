@@ -106,7 +106,7 @@ The app works perfectly in fallback mode:
 
 - [ ] Add actual NFT fetching from wallet
 - [ ] Implement image generation (using Replicate, Stability AI, etc.)
-- [ ] Add IPFS upload for mutated images
+- [ ] Add IPFS upload for Cutifyd images
 - [ ] Deploy smart contract for minting
 - [ ] Connect minting functionality to UI
 - [ ] Add payment processing

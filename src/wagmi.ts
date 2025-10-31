@@ -22,8 +22,8 @@ export const appKit = createAppKit({
   networks: [base],
   projectId,
   metadata: {
-    name: "Mutant Warplets",
-    description: "Mutate your Warplet into cyberpunk creatures",
+    name: "Halloween Warplets",
+    description: "Cutify your Warplet for Halloween! 🎃",
     url: typeof window !== "undefined" ? window.location.origin : "",
     icons: [],
   },
@@ -41,7 +41,7 @@ export const config = createConfig({
     injected(), // MetaMask, Rainbow, Coinbase Wallet browser extensions
     farcasterFrame(), // Farcaster Frame connector
     walletConnect({ projectId }), // WalletConnect
-    coinbaseWallet({ appName: "Mutant Warplets" }), // Coinbase Wallet
+    coinbaseWallet({ appName: "Halloween Warplets" }), // Coinbase Wallet
   ],
   transports: {
     [base.id]: http(),

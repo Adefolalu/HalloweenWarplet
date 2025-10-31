@@ -49,7 +49,7 @@ export async function mintMutant(args: MintArgs): Promise<MintResult> {
 
   const receipt = await waitForTransactionReceipt(config, { hash });
 
-  // Try to parse Mutated event to get tokenId
+  // Try to parse Cutifyd event to get tokenId
   let tokenId: bigint | undefined = undefined;
   for (const log of receipt.logs) {
     try {
@@ -58,7 +58,7 @@ export async function mintMutant(args: MintArgs): Promise<MintResult> {
         data: log.data,
         topics: log.topics,
       }) as any;
-      if (decoded?.eventName === "Mutated") {
+      if (decoded?.eventName === "Cutified") {
         const args = decoded.args as {
           tokenId: bigint;
           originContract: `0x${string}`;

@@ -55,7 +55,7 @@ export function MutationComponent({ nftData }: MutationComponentProps) {
 
       try {
         const img = await imageService.generateMutatedImage({
-          prompt: "cyberpunk mutant",
+          prompt: "cute halloween warplet",
           imageUrl: nftData!.image,
           strength: 0.75,
           negativePrompt: "",
@@ -70,8 +70,8 @@ export function MutationComponent({ nftData }: MutationComponentProps) {
         setStatus("ready");
       } catch (e: any) {
         if (cancelled) return;
-        console.error("Mutation generation failed:", e);
-        setError("Unable to generate mutation. Please try again later.");
+        console.error("Cutify generation failed:", e);
+        setError("Unable to create cutified version. Please try again later.");
         setStatus("error");
       }
     }
@@ -102,8 +102,8 @@ export function MutationComponent({ nftData }: MutationComponentProps) {
       });
       setStatus("ready");
     } catch (e: any) {
-      console.error("Retry mutation failed:", e);
-      setError("Unable to generate mutation. Please try again later.");
+      console.error("Retry cutify failed:", e);
+      setError("Unable to create cutified version. Please try again later.");
       setStatus("error");
     }
   };
@@ -121,19 +121,19 @@ export function MutationComponent({ nftData }: MutationComponentProps) {
       const sourceImage = previousResult?.mutatedImageUrl || nftData.image;
 
       const img = await imageService.generateMutatedImage({
-        prompt: "cyberpunk mutant remix",
+        prompt: "cute halloween warplet remix",
         imageUrl: sourceImage,
         strength: 0.75,
         negativePrompt: "",
-        customPrompt: `Create an ALTERNATIVE CYBERPUNK MUTATION of this character with a completely different aesthetic.
+        customPrompt: `Create an ALTERNATIVE CUTE HALLOWEEN Warplet with a completely different aesthetic.
 Keep the base form recognizable, but this time go in a DIFFERENT DIRECTION:
-- Use a completely different color palette (e.g., if previous was neon blue/purple, try toxic green/orange, crimson red/gold, or arctic white/cyan).
-- Change the mutation style: if previous had sleek tech, try organic biotech; if it had armor, try energy fields or neural networks.
-- Add different cybernetic enhancements: maybe eye augmentations, spine modifications, wing-like extensions, or holographic projections.
-- Experiment with different lighting: dark noir shadows, bright neon glow, or ethereal energy aura.
-- Dramatically alter the background atmosphere: toxic wasteland fog, digital matrix rain, bioluminescent spores, or cyberpunk city haze.
-- Make this version feel like a REMIX or ALTERNATE TIMELINE mutation - distinctly different but equally intense.
-Style: highly detailed digital illustration, cinematic lighting, 8K resolution, bold creative choices, vivid unique colors.
+- Use a completely different pastel color palette (e.g., if previous was orange/purple, try mint/pink, lavender/cream, or peach/teal).
+- Change the Halloween costume style: if previous had witch vibes, try ghost sprite, pumpkin friend, candy wizard, or bat familiar.
+- Add different accessories: maybe a different hat style, new wings, alternative candy decorations, or unique Halloween props.
+- Experiment with different soft lighting: warm candlelight glow, cool moonlight shimmer, or sparkly magic aura.
+- Vary the background atmosphere: misty forest, cozy pumpkin patch, starry night sky, or soft fog with fireflies.
+- Make this version feel like a REMIX or ALTERNATE COSTUME - distinctly different but equally charming and wholesome.
+Style: cute illustration, high-quality digital painting, soft cinematic lighting, gentle atmosphere, cozy Halloween vibes. No horror/gore.
 `,
       });
 
@@ -143,11 +143,13 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
       });
       setStatus("ready");
     } catch (e: any) {
-      console.error("Re-mutation failed:", e);
-      setError("Unable to generate new mutation. Please try again later.");
+      console.error("Re-cutify failed:", e);
+      setError(
+        "Unable to create new cutified version. Please try again later."
+      );
       setStatus("error");
 
-      // Restore previous result if re-mutation failed
+      // Restore previous result if re-cutify failed
       if (previousResult) {
         setResult(previousResult);
         setStatus("ready");
@@ -175,13 +177,13 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
       // 2) Upload image to IPFS
       const imageUri = await uploadImageBlob(imageBlob);
       // 3) Build metadata
-      const name = `Mutated ${nftData.name}`;
-      const description = `Cyberpunk mutant version of ${nftData.name}`;
+      const name = `Cutified ${nftData.name}`;
+      const description = `Adorable Halloween version of ${nftData.name}`;
       const attributes = [
         ...(nftData.attributes || []),
         {
-          trait_type: "Mutation Type",
-          value: "Cyberpunk",
+          trait_type: "Halloween Style",
+          value: "Cutified",
         },
       ];
       const metadataUri = await uploadMetadata({
@@ -252,7 +254,7 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
 
     try {
       const miniAppUrl = "https://mwpt.vercel.app";
-      const text = `I just minted my ${mintSuccessData.name}! 🔥\n\nMutate your Warplet now on Mutant Warplet`;
+      const text = `I just cutified my ${mintSuccessData.name} for Halloween! 🎃✨\n\nCutify your Warplet now on Halloween Warplets!`;
 
       await sdk.actions.composeCast({
         text,
@@ -299,7 +301,7 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
                         </svg>
                       </div>
                       <p className="text-sm font-semibold text-slate-300 mb-2">
-                        Mutation Failed
+                        Cutify Failed
                       </p>
                       <p className="text-xs text-slate-400 mb-4">{error}</p>
                       <button
@@ -338,23 +340,23 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
 
         {/* Action buttons */}
         <div className="p-4 space-y-2">
-          {/* Re-mutate button - only show when ready and not minting */}
+          {/* Re-cutify button - only show when ready and not minting */}
           {status === "ready" && !isMinting && (
             <button
               onClick={handleRemutate}
-              className="w-full py-2.5 rounded-xl font-medium text-xs tracking-wide text-[#2596be] bg-slate-700/50 hover:bg-slate-700 border border-[#2596be]/30 hover:border-[#2596be]/50 shadow-[0_2px_12px_rgba(37,150,190,0.15)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+              className="w-full py-2.5 rounded-xl font-medium text-xs tracking-wide text-orange-400 bg-slate-700/50 hover:bg-slate-700 border border-orange-400/30 hover:border-orange-400/50 shadow-[0_2px_12px_rgba(251,146,60,0.15)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
             >
-              🔄 RE-MUTATE
+              🎃 TRY ANOTHER COSTUME
             </button>
           )}
 
-          {/* Mint button with elite styling */}
+          {/* Mint button with Halloween styling */}
           <button
             disabled={status !== "ready" || isMinting}
             onClick={handleProceedToMint}
-            className={`w-full py-3 rounded-xl font-semibold text-sm tracking-wide text-white shadow-[0_4px_16px_rgba(37,150,190,0.25)] transition-all duration-300 relative overflow-hidden group ${
+            className={`w-full py-3 rounded-xl font-semibold text-sm tracking-wide text-white shadow-[0_4px_16px_rgba(251,146,60,0.25)] transition-all duration-300 relative overflow-hidden group ${
               status === "ready" && !isMinting
-                ? "bg-[#2596be] hover:bg-[#1d7a9f] hover:shadow-[0_6px_24px_rgba(37,150,190,0.4)] hover:scale-[1.01] active:scale-[0.99]"
+                ? "bg-orange-500 hover:bg-orange-600 hover:shadow-[0_6px_24px_rgba(251,146,60,0.4)] hover:scale-[1.01] active:scale-[0.99]"
                 : "bg-gray-300 cursor-not-allowed opacity-60"
             }`}
           >
@@ -383,7 +385,7 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
                       clipRule="evenodd"
                     />
                   </svg>
-                  MINT MUTANT
+                  MINT Custome
                 </span>
                 <span className="text-[10px] font-medium opacity-90 tracking-wide">
                   {mutationFee ? formatEther(mutationFee) : "0.00037"} ETH
@@ -391,7 +393,7 @@ Style: highly detailed digital illustration, cinematic lighting, 8K resolution, 
               </span>
             ) : (
               <span className="uppercase tracking-wider text-xs">
-                Mutating...
+                Cutifying...
               </span>
             )}
           </button>

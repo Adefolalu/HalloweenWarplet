@@ -80,7 +80,7 @@ Visit `http://localhost:5173` in your browser.
      - Epic backstory/lore
      - Quality validation
 
-5. **Mint Mutated NFT**
+5. **Mint Cutifyd NFT**
    - Review the mutation details
    - Proceed to mint (feature in development)
 
@@ -106,7 +106,7 @@ Visit `http://localhost:5173` in your browser.
 ### Coming Soon 🚧
 
 - Smart contract integration for minting
-- IPFS upload for mutated NFTs
+- IPFS upload for Cutifyd NFTs
 - Real NFT fetching from user wallets
 - Actual image mutation/transformation
 - Mutation history tracking

@@ -13,11 +13,11 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-[#1a5f7a]">
       <div className="container mx-auto py-6 px-4 max-w-md">
         <header className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-[#2596be] mb-1 tracking-tight drop-shadow-[0_2px_8px_rgba(37,150,190,0.3)]">
-            Mutant Warplets
+          <h1 className="text-2xl font-bold text-orange-400 mb-1 tracking-tight drop-shadow-[0_2px_8px_rgba(251,146,60,0.4)]">
+            🎃 Halloween Warplets 🎃
           </h1>
-          <p className="text-[10px] text-[#2596be]/80 font-semibold tracking-widest uppercase">
-            Evolve • Mutate • Mint
+          <p className="text-[10px] text-orange-300/90 font-semibold tracking-widest uppercase">
+            Cutify • Collect • Celebrate
           </p>
         </header>
         {/* Owner-only admin panel (withdraw treasury). Renders null for non-owners. */}
@@ -190,12 +190,12 @@ function WarpletMutator() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#2596be] mb-2">
+              <h3 className="text-xl font-bold text-orange-400 mb-2">
                 No Warplet in This Wallet
               </h3>
               <p className="text-sm text-slate-400 mb-6">
                 You don't have a Warplet in this wallet. Mint your Warplet first
-                before mutation.
+                before cutifying for Halloween!
               </p>
             </div>
 
@@ -212,7 +212,7 @@ function WarpletMutator() {
               <div className="text-center text-xs text-slate-500 py-2">
                 <p className="mb-1">Your FID: {tokenId}</p>
                 <p className="text-[10px] text-slate-600">
-                  Mint Warplet #{tokenId} first, then come back to mutate it.
+                  Mint Warplet #{tokenId} first, then come back to Cutify it.
                 </p>
               </div>
             </div>
@@ -292,11 +292,11 @@ function WarpletMutator() {
               />
             </svg>
           </div>
-          <h3 className="text-xl font-bold text-[#2596be] mb-2">
+          <h3 className="text-xl font-bold text-orange-400 mb-2">
             Connect Wallet
           </h3>
           <p className="text-sm text-slate-400 mb-6">
-            Connect your wallet to mutate your Warplet
+            Connect your wallet to cutify your Warplet for Halloween! 🎃
           </p>
           <div className="space-y-4">
             <w3m-button />
@@ -372,8 +372,8 @@ function WarpletMutator() {
             </div>
           ) : ownedWarplets.length > 1 ? (
             <div>
-              <h3 className="text-lg font-semibold text-[#2596be] mb-4">
-                Select a Warplet to mutate
+              <h3 className="text-lg font-semibold text-orange-400 mb-4">
+                Select a Warplet to Cutify for Halloween 🎃
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {ownedWarplets.map((nft) => (
