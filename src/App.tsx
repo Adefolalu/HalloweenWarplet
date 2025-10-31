@@ -10,17 +10,67 @@ import AdminPanel from "./components/AdminPanel";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-[#1a5f7a]">
-      <div className="container mx-auto py-6 px-4 max-w-md">
-        <header className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-orange-400 mb-1 tracking-tight drop-shadow-[0_2px_8px_rgba(251,146,60,0.4)]">
-            🎃 Halloween Warplets 🎃
-          </h1>
-          <p className="text-[10px] text-orange-300/90 font-semibold tracking-widest uppercase">
-            Cutify • Collect • Celebrate
-          </p>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Hero Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/hero.jpg)" }}
+      >
+        <div className="absolute inset-0 backdrop-blur-md bg-purple-900/60"></div>
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/70 via-indigo-900/60 to-black/80"></div>
+
+      {/* Floating Halloween Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        <div
+          className="absolute top-20 left-10 text-2xl animate-bounce"
+          style={{ animationDelay: "0s" }}
+        >
+          🦇
+        </div>
+        <div
+          className="absolute top-32 right-16 text-xl animate-bounce"
+          style={{ animationDelay: "1s" }}
+        >
+          👻
+        </div>
+        <div
+          className="absolute top-64 left-20 text-lg animate-bounce"
+          style={{ animationDelay: "2s" }}
+        >
+          🕷️
+        </div>
+        <div
+          className="absolute bottom-32 right-8 text-2xl animate-bounce"
+          style={{ animationDelay: "0.5s" }}
+        >
+          🎃
+        </div>
+        <div
+          className="absolute bottom-48 left-12 text-lg animate-bounce"
+          style={{ animationDelay: "1.5s" }}
+        >
+          🍭
+        </div>
+      </div>
+
+      {/* Mystical Glow Effect */}
+      <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 via-transparent to-purple-900/20"></div>
+
+      <div className="container mx-auto py-8 px-4 max-w-md relative z-20">
+        <header className="text-center mb-8 relative">
+          {/* Magical Border */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-orange-400/20 via-purple-400/20 to-orange-400/20 rounded-3xl blur-xl"></div>
+
+          <div className="relative bg-gradient-to-br from-black/60 via-purple-900/40 to-orange-900/60 backdrop-blur-sm rounded-2xl p-6 border-2 border-orange-400/30 shadow-[0_0_30px_rgba(251,146,60,0.3)]">
+            <h1 className="text-3xl font-creepster font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-500 mb-3 tracking-wide filter drop-shadow-[0_0_15px_rgba(251,146,60,0.8)]">
+              🎃 Halloween Warplets 🎃
+            </h1>
+          </div>
         </header>
-        {/* Owner-only admin panel (withdraw treasury). Renders null for non-owners. */}
+
         <AdminPanel />
         <WarpletMutator />
       </div>
@@ -153,14 +203,25 @@ function WarpletMutator() {
   if (farcasterContext.isLoading || ownedLoading) {
     return (
       <div className="w-full">
-        <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-10 text-center border border-[#2596be]/30">
-          <div className="relative inline-block mb-4">
-            <div className="w-14 h-14 border-[3px] border-[#2596be]/30 rounded-full absolute"></div>
-            <div className="w-14 h-14 border-[3px] border-[#2596be] border-t-transparent rounded-full animate-spin"></div>
+        <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-12 text-center border-2 border-orange-400/40 relative overflow-hidden">
+          {/* Spooky Glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-purple-500/10 to-orange-500/10 animate-pulse"></div>
+
+          <div className="relative z-10">
+            {/* Halloween Loading Animation */}
+            <div className="relative inline-block mb-6">
+              <div className="w-16 h-16 text-4xl animate-spin">🎃</div>
+              <div className="absolute inset-0 w-16 h-16 border-4 border-orange-400/30 rounded-full"></div>
+              <div className="absolute inset-0 w-16 h-16 border-4 border-orange-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+
+            <p className="text-lg font-bold text-orange-300 tracking-wide mb-2">
+              Summoning your Warplets... 🔮
+            </p>
+            <p className="text-sm text-purple-300/80">
+              Casting Halloween magic ✨
+            </p>
           </div>
-          <p className="text-sm font-semibold text-[#2596be] tracking-wide">
-            Loading your Warplets...
-          </p>
         </div>
       </div>
     );
@@ -173,46 +234,48 @@ function WarpletMutator() {
       const tokenId = error.split(":")[1];
       return (
         <div className="w-full">
-          <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-8 border border-[#2596be]/30">
-            <div className="text-center mb-6">
-              <div className="w-20 h-20 mx-auto mb-4 bg-[#2596be]/10 rounded-full flex items-center justify-center border-2 border-[#2596be]/30">
-                <svg
-                  className="w-10 h-10 text-[#2596be]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
+          <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-8 border-2 border-orange-400/40 relative overflow-hidden">
+            {/* Spooky Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-2 left-4 text-lg">🕸️</div>
+              <div className="absolute top-6 right-6 text-lg">🕷️</div>
+              <div className="absolute bottom-4 left-8 text-lg">🦇</div>
+            </div>
+
+            <div className="text-center mb-6 relative z-10">
+              <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-orange-500/20 to-purple-500/20 rounded-full flex items-center justify-center border-2 border-orange-400/50 shadow-[0_0_30px_rgba(251,146,60,0.3)]">
+                <div className="text-4xl animate-bounce">👻</div>
               </div>
-              <h3 className="text-xl font-bold text-orange-400 mb-2">
-                No Warplet in This Wallet
+              <h3 className="text-2xl font-nosifer font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-3 filter drop-shadow-[0_0_10px_rgba(251,146,60,0.6)]">
+                No Warplet Found!
               </h3>
-              <p className="text-sm text-slate-400 mb-6">
-                You don't have a Warplet in this wallet. Mint your Warplet first
-                before cutifying for Halloween!
+              <p className="text-sm text-purple-200/90 mb-6 leading-relaxed">
+                Your cauldron is empty! 🪄 Brew your first Warplet before we can
+                cast Halloween magic on it! ✨
               </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4 relative z-10">
               <a
                 href="https://warpcast.com/~/composer-actions/compose?text=https://warplets.xyz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-3 px-4 bg-[#2596be] hover:bg-[#1d7a9f] text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_16px_rgba(37,150,190,0.3)]"
+                className="block w-full py-4 px-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold text-sm rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(251,146,60,0.4)] relative overflow-hidden group"
               >
-                🎨 Mint Your Warplet
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  🎃 Brew Your First Warplet 🧙‍♀️
+                </span>
               </a>
 
-              <div className="text-center text-xs text-slate-500 py-2">
-                <p className="mb-1">Your FID: {tokenId}</p>
-                <p className="text-[10px] text-slate-600">
-                  Mint Warplet #{tokenId} first, then come back to Cutify it.
+              <div className="text-center bg-black/40 rounded-xl p-4 border border-purple-400/30">
+                <p className="text-sm text-orange-300 mb-1">
+                  🆔 Your Magical FID:{" "}
+                  <span className="font-mono text-yellow-300">{tokenId}</span>
+                </p>
+                <p className="text-xs text-purple-300/80">
+                  Create Warplet #{tokenId} first, then return for Halloween
+                  cutification! 🎭
                 </p>
               </div>
             </div>
@@ -224,11 +287,38 @@ function WarpletMutator() {
     // Generic error state
     return (
       <div className="w-full">
-        <div className="bg-gradient-to-br from-red-900/80 to-red-800/70 border-2 border-red-500/50 rounded-3xl p-8 text-center shadow-[0_8px_24px_rgba(239,68,68,0.3)]">
-          <p className="text-red-300 font-semibold mb-2">⚠️ {error}</p>
-          <p className="text-xs text-red-400 font-medium">
-            FID: {farcasterContext.fid || "Not detected"}
-          </p>
+        <div className="bg-gradient-to-br from-red-900/80 via-orange-900/60 to-black/90 backdrop-blur-xl rounded-3xl p-8 text-center shadow-[0_0_40px_rgba(220,38,38,0.4)] border-2 border-red-400/50 relative overflow-hidden">
+          {/* Spooky Error Decoration */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-3 left-3 text-xl animate-pulse">
+              💀
+            </div>
+            <div
+              className="absolute top-3 right-3 text-xl animate-pulse"
+              style={{ animationDelay: "0.5s" }}
+            >
+              ⚡
+            </div>
+            <div
+              className="absolute bottom-3 left-6 text-lg animate-pulse"
+              style={{ animationDelay: "1s" }}
+            >
+              🔥
+            </div>
+          </div>
+
+          <div className="relative z-10">
+            <div className="text-4xl mb-4 animate-bounce">😱</div>
+            <p className="text-red-200 font-bold mb-4 text-lg">
+              Spell Gone Wrong!
+            </p>
+            <p className="text-red-300 font-semibold mb-2">⚠️ {error}</p>
+            <div className="bg-black/40 rounded-lg p-3 border border-red-400/30">
+              <p className="text-xs text-red-400 font-medium">
+                🆔 FID: {farcasterContext.fid || "Mystery Spirit 👻"}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -240,12 +330,19 @@ function WarpletMutator() {
     if (isMiniApp === null) {
       return (
         <div className="w-full">
-          <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-10 text-center border border-[#2596be]/30">
-            <div className="relative inline-block mb-4">
-              <div className="w-14 h-14 border-[3px] border-[#2596be]/30 rounded-full absolute"></div>
-              <div className="w-14 h-14 border-[3px] border-[#2596be] border-t-transparent rounded-full animate-spin"></div>
+          <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-10 text-center border-2 border-orange-400/40 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-purple-500/5 to-orange-500/5 animate-pulse"></div>
+
+            <div className="relative z-10">
+              <div className="relative inline-block mb-6">
+                <div className="w-16 h-16 text-4xl animate-pulse">🔮</div>
+                <div className="absolute inset-0 w-16 h-16 border-4 border-purple-400/30 rounded-full"></div>
+                <div className="absolute inset-0 w-16 h-16 border-4 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <p className="text-lg text-purple-200 font-medium">
+                Preparing magical realm... ✨
+              </p>
             </div>
-            <p className="text-sm text-slate-300">Preparing environment...</p>
           </div>
         </div>
       );
@@ -255,19 +352,49 @@ function WarpletMutator() {
     if (isMiniApp === true) {
       return (
         <div className="w-full">
-          <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-10 text-center border border-[#2596be]/30">
-            <div className="relative inline-block mb-4">
-              <div className="w-14 h-14 border-[3px] border-[#2596be]/30 rounded-full absolute"></div>
-              <div className="w-14 h-14 border-[3px] border-[#2596be] border-t-transparent rounded-full animate-spin"></div>
+          <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-10 text-center border-2 border-orange-400/40 relative overflow-hidden">
+            {/* Magical Connection Animation */}
+            <div className="absolute inset-0">
+              <div className="absolute top-4 left-6 text-lg animate-ping">
+                ✨
+              </div>
+              <div
+                className="absolute top-8 right-8 text-lg animate-ping"
+                style={{ animationDelay: "0.5s" }}
+              >
+                ⭐
+              </div>
+              <div
+                className="absolute bottom-6 left-4 text-lg animate-ping"
+                style={{ animationDelay: "1s" }}
+              >
+                🌟
+              </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">
-              Connecting Warpcast wallet...
-            </p>
-            {farcasterContext.fid && (
-              <p className="text-xs text-[#2596be]/80">
-                FID: {farcasterContext.fid}
+
+            <div className="relative z-10">
+              <div className="relative inline-block mb-6">
+                <div className="w-16 h-16 text-4xl animate-bounce">🧙‍♂️</div>
+                <div className="absolute inset-0 w-16 h-16 border-4 border-orange-400/30 rounded-full"></div>
+                <div className="absolute inset-0 w-16 h-16 border-4 border-orange-400 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <p className="text-lg text-orange-200 font-bold mb-2">
+                Connecting to Warpcast Grimoire... 📜
               </p>
-            )}
+              <p className="text-sm text-purple-300/80">
+                Establishing magical link ⚡
+              </p>
+              {farcasterContext.fid && (
+                <div className="mt-4 bg-black/40 rounded-lg p-3 border border-orange-400/30">
+                  <p className="text-xs text-orange-300">
+                    🆔 Wizard ID:{" "}
+                    <span className="font-mono text-yellow-300">
+                      {farcasterContext.fid}
+                    </span>
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       );
@@ -276,32 +403,55 @@ function WarpletMutator() {
     // Browser: show AppKit button
     return (
       <div className="w-full">
-        <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-10 text-center border border-[#2596be]/30">
-          <div className="w-16 h-16 mx-auto mb-4 bg-[#2596be]/10 rounded-full flex items-center justify-center border-2 border-[#2596be]/30">
-            <svg
-              className="w-8 h-8 text-[#2596be]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-10 text-center border-2 border-orange-400/40 relative overflow-hidden">
+          {/* Floating Magic Elements */}
+          <div className="absolute inset-0 overflow-hidden opacity-20">
+            <div className="absolute top-6 left-8 text-2xl animate-float">
+              🕯️
+            </div>
+            <div
+              className="absolute top-12 right-6 text-xl animate-float"
+              style={{ animationDelay: "1s" }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
+              🔮
+            </div>
+            <div
+              className="absolute bottom-8 left-6 text-lg animate-float"
+              style={{ animationDelay: "0.5s" }}
+            >
+              🧿
+            </div>
           </div>
-          <h3 className="text-xl font-bold text-orange-400 mb-2">
-            Connect Wallet
-          </h3>
-          <p className="text-sm text-slate-400 mb-6">
-            Connect your wallet to cutify your Warplet for Halloween! 🎃
-          </p>
-          <div className="space-y-4">
-            <w3m-button />
-            <div className="text-xs text-slate-500">
-              Click above to see all wallet options
+
+          <div className="relative z-10">
+            {/* Magical Wallet Icon */}
+            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-orange-500/20 to-purple-500/20 rounded-full flex items-center justify-center border-2 border-orange-400/50 shadow-[0_0_30px_rgba(251,146,60,0.3)] relative">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/20 via-purple-400/20 to-orange-400/20 animate-pulse"></div>
+              <div className="text-4xl animate-bounce">👛</div>
+            </div>
+
+            <h3 className="text-2xl font-butcherman font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-3 filter drop-shadow-[0_0_10px_rgba(251,146,60,0.6)]">
+              Connect Your Wallet 🧙‍♀️
+            </h3>
+            <p className="text-lg text-purple-200/90 mb-8 leading-relaxed">
+              Link your magical wallet to start cutifying your Warplets for
+              Halloween! ✨🎃
+            </p>
+
+            <div className="space-y-6">
+              <div className="p-1 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 rounded-2xl shadow-[0_0_25px_rgba(251,146,60,0.4)]">
+                <div className="bg-black/80 rounded-xl p-2">
+                  <w3m-button />
+                </div>
+              </div>
+
+              <div className="bg-black/40 rounded-xl p-4 border border-purple-400/30">
+                <p className="text-sm text-purple-300/90 flex items-center justify-center gap-2">
+                  <span className="animate-pulse">🌟</span>
+                  <span>Choose your preferred wallet above</span>
+                  <span className="animate-pulse">🌟</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -313,117 +463,164 @@ function WarpletMutator() {
   if (isConnected && !warpletData) {
     return (
       <div className="w-full">
-        <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] p-6 border border-[#2596be]/30">
-          {ownedError ? (
-            <div className="text-center">
-              <p className="text-sm text-slate-300 mb-4">{ownedError}</p>
-              <button
-                onClick={async () => {
-                  if (!address) return;
-                  setOwnedLoading(true);
-                  setOwnedError(null);
-                  try {
-                    const nfts = await fetchUserWarplets(address);
-                    setOwnedWarplets(nfts);
-                    if (nfts.length === 1) {
-                      const w = nfts[0];
-                      setWarpletData({
-                        tokenId: w.tokenId,
-                        contractAddress:
-                          "0x699727F9E01A822EFdcf7333073f0461e5914b4E",
-                        name: w.name || `Warplet #${w.tokenId}`,
-                        description: w.description || "",
-                        image: w.image,
-                        attributes: w.attributes || [],
-                      });
-                    }
-                  } catch (e) {
-                    console.error(e);
-                    setOwnedError(
-                      "Unable to load your Warplets. Please try again."
-                    );
-                  } finally {
-                    setOwnedLoading(false);
-                  }
-                }}
-                className="inline-flex items-center px-4 py-2 rounded-lg bg-[#2596be] text-white hover:bg-[#1f83a6] transition-colors"
-              >
-                Try again
-              </button>
+        <div className="bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] p-6 border-2 border-orange-400/40 relative overflow-hidden">
+          {/* Floating Decoration */}
+          <div className="absolute inset-0 overflow-hidden opacity-10">
+            <div className="absolute top-4 left-6 text-xl animate-float">
+              🎭
             </div>
-          ) : ownedWarplets.length === 0 ? (
-            <div className="text-center">
-              <h3 className="text-xl font-bold text-[#2596be] mb-2">
-                No Warplet found
-              </h3>
-              <p className="text-sm text-slate-400 mb-2">
-                We couldn’t find a Warplet in this wallet.
-              </p>
-              {isMiniApp ? (
-                <p className="text-xs text-slate-500">
-                  This mini app uses your Warpcast wallet. If your Warplet is in
-                  a different wallet
-                </p>
-              ) : (
-                <p className="text-xs text-slate-500">
-                  Connect the wallet that owns your Warplet.
-                </p>
-              )}
+            <div
+              className="absolute top-8 right-4 text-lg animate-float"
+              style={{ animationDelay: "1s" }}
+            >
+              ✨
             </div>
-          ) : ownedWarplets.length > 1 ? (
-            <div>
-              <h3 className="text-lg font-semibold text-orange-400 mb-4">
-                Select a Warplet to Cutify for Halloween 🎃
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {ownedWarplets.map((nft) => (
-                  <button
-                    key={nft.tokenId}
-                    onClick={() =>
-                      setWarpletData({
-                        tokenId: nft.tokenId,
-                        contractAddress:
-                          "0x699727F9E01A822EFdcf7333073f0461e5914b4E",
-                        name: nft.name || `Warplet #${nft.tokenId}`,
-                        description: nft.description || "",
-                        image: nft.image,
-                        attributes: nft.attributes || [],
-                      })
+            <div
+              className="absolute bottom-6 left-4 text-lg animate-float"
+              style={{ animationDelay: "0.5s" }}
+            >
+              🌙
+            </div>
+          </div>
+
+          <div className="relative z-10">
+            {ownedError ? (
+              <div className="text-center">
+                <div className="text-4xl mb-4 animate-bounce">😵</div>
+                <p className="text-lg text-red-300 mb-6 font-medium">
+                  Spell casting failed!
+                </p>
+                <p className="text-sm text-purple-200/90 mb-6">{ownedError}</p>
+                <button
+                  onClick={async () => {
+                    if (!address) return;
+                    setOwnedLoading(true);
+                    setOwnedError(null);
+                    try {
+                      const nfts = await fetchUserWarplets(address);
+                      setOwnedWarplets(nfts);
+                      if (nfts.length === 1) {
+                        const w = nfts[0];
+                        setWarpletData({
+                          tokenId: w.tokenId,
+                          contractAddress:
+                            "0x699727F9E01A822EFdcf7333073f0461e5914b4E",
+                          name: w.name || `Warplet #${w.tokenId}`,
+                          description: w.description || "",
+                          image: w.image,
+                          attributes: w.attributes || [],
+                        });
+                      }
+                    } catch (e) {
+                      console.error(e);
+                      setOwnedError(
+                        "Unable to load your Warplets. Please try again."
+                      );
+                    } finally {
+                      setOwnedLoading(false);
                     }
-                    className="group overflow-hidden rounded-xl border border-slate-700/60 hover:border-[#2596be]/60 transition-colors"
-                  >
-                    <div className="aspect-square bg-slate-900/50">
-                      {nft.image ? (
-                        <img
-                          src={nft.image}
-                          alt={nft.name || `Warplet #${nft.tokenId}`}
-                          className="w-full h-full object-cover transition-transform group-hover:scale-[1.02]"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-slate-500 text-xs">
-                          No image
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-2 text-left">
-                      <div className="text-sm text-slate-200 truncate">
-                        {nft.name || `Warplet #${nft.tokenId}`}
-                      </div>
-                      <div className="text-xs text-slate-500">
-                        ID: {nft.tokenId}
-                      </div>
-                    </div>
-                  </button>
-                ))}
+                  }}
+                  className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold transition-all duration-300 hover:scale-[1.02] shadow-[0_0_25px_rgba(251,146,60,0.4)]"
+                >
+                  🔄 Cast Again
+                </button>
               </div>
-            </div>
-          ) : (
-            // If exactly one, we likely already auto-selected; render a subtle message
-            <div className="text-center text-slate-400 text-sm">
-              Preparing your Warplet…
-            </div>
-          )}
+            ) : ownedWarplets.length === 0 ? (
+              <div className="text-center">
+                <div className="text-5xl mb-4 animate-bounce">🔍</div>
+                <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-3 filter drop-shadow-[0_0_10px_rgba(251,146,60,0.6)]">
+                  No Warplets Discovered
+                </h3>
+                <p className="text-lg text-purple-200/90 mb-4">
+                  Your spellbook appears empty! 📖
+                </p>
+                {isMiniApp ? (
+                  <p className="text-sm text-purple-300/80 bg-black/40 rounded-lg p-3 border border-purple-400/30">
+                    🧙‍♂️ This grimoire is linked to your Warpcast soul. If your
+                    Warplets dwell in another realm...
+                  </p>
+                ) : (
+                  <p className="text-sm text-purple-300/80 bg-black/40 rounded-lg p-3 border border-purple-400/30">
+                    🔮 Connect the wallet that guards your Warplets
+                  </p>
+                )}
+              </div>
+            ) : ownedWarplets.length > 1 ? (
+              <div>
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-eater font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-2 filter drop-shadow-[0_0_10px_rgba(251,146,60,0.6)]">
+                    Choose Your Halloween Victim 🎃👻
+                  </h3>
+                  <p className="text-sm text-purple-300/90">
+                    Select a Warplet to transform with spooky magic! ✨
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {ownedWarplets.map((nft, index) => (
+                    <button
+                      key={nft.tokenId}
+                      onClick={() =>
+                        setWarpletData({
+                          tokenId: nft.tokenId,
+                          contractAddress:
+                            "0x699727F9E01A822EFdcf7333073f0461e5914b4E",
+                          name: nft.name || `Warplet #${nft.tokenId}`,
+                          description: nft.description || "",
+                          image: nft.image,
+                          attributes: nft.attributes || [],
+                        })
+                      }
+                      className="group relative overflow-hidden rounded-2xl border-2 border-orange-400/30 hover:border-orange-400/80 bg-gradient-to-br from-purple-800/40 to-black/60 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(251,146,60,0.3)]"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      {/* Magical Hover Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-400/0 via-orange-400/20 to-orange-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                      <div className="aspect-square bg-gradient-to-br from-purple-900/50 to-black/80 relative overflow-hidden">
+                        {nft.image ? (
+                          <img
+                            src={nft.image}
+                            alt={nft.name || `Warplet #${nft.tokenId}`}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <div className="text-4xl animate-pulse">👻</div>
+                          </div>
+                        )}
+                        {/* Magical Border Glow */}
+                        <div className="absolute inset-0 border-2 border-orange-400/0 group-hover:border-orange-400/50 rounded-xl transition-all duration-300"></div>
+                      </div>
+
+                      <div className="p-3 relative z-10">
+                        <div className="text-sm font-bold text-orange-200 truncate mb-1">
+                          {nft.name || `Warplet #${nft.tokenId}`}
+                        </div>
+                        <div className="text-xs text-purple-300/80 font-mono">
+                          🆔 {nft.tokenId}
+                        </div>
+                      </div>
+
+                      {/* Selection Indicator */}
+                      <div className="absolute top-2 right-2 w-6 h-6 bg-orange-500/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                        <span className="text-xs">✨</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              // If exactly one, we likely already auto-selected; render a subtle message
+              <div className="text-center py-8">
+                <div className="text-4xl mb-4 animate-pulse">🎭</div>
+                <p className="text-lg text-purple-200/90 font-medium">
+                  Preparing your Warplet for transformation... ✨
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );

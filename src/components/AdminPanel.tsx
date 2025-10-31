@@ -58,111 +58,140 @@ export default function AdminPanel() {
   // While determining ownership, render a subtle skeleton
   if (isOwner === null) {
     return (
-      <div className="mb-4">
-        <div className="bg-gradient-to-br from-yellow-900/20 to-amber-800/10 border border-yellow-600/30 rounded-2xl p-4 animate-pulse" />
+      <div className="mb-6">
+        <div className="bg-gradient-to-br from-orange-900/20 to-purple-800/10 border-2 border-orange-400/20 rounded-3xl p-4 animate-pulse backdrop-blur-sm" />
       </div>
     );
   }
 
   return (
-    <div className="mb-6">
-      <div className="bg-gradient-to-br from-yellow-900/20 to-amber-800/10 border border-yellow-600/30 rounded-2xl p-4">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-yellow-600/20 text-yellow-300 text-xs font-bold">
-              ⚡
-            </span>
-            <h2 className="text-sm font-bold text-yellow-300 tracking-wide">
-              Admin Treasury
-            </h2>
+    <div className="mb-8">
+      <div className="bg-gradient-to-br from-orange-900/40 via-purple-900/30 to-black/60 backdrop-blur-xl border-2 border-orange-400/50 rounded-3xl p-6 shadow-[0_0_40px_rgba(251,146,60,0.3)] relative overflow-hidden">
+        {/* Floating Halloween Elements */}
+        <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
+          <div className="absolute top-2 left-4 text-lg animate-float">💰</div>
+          <div
+            className="absolute top-4 right-6 text-sm animate-float"
+            style={{ animationDelay: "1s" }}
+          >
+            👑
           </div>
-          {ownerAddress && (
-            <div className="text-[10px] text-yellow-200/70">
-              Owner: {shortAddr}
-            </div>
-          )}
+          <div
+            className="absolute bottom-3 left-8 text-sm animate-float"
+            style={{ animationDelay: "0.5s" }}
+          >
+            ✨
+          </div>
         </div>
 
-        {error && (
-          <div className="text-xs text-red-300 bg-red-900/30 border border-red-700/40 rounded-lg p-2 mb-2">
-            {error}
-          </div>
-        )}
-        {success && (
-          <div className="text-xs text-emerald-200 bg-emerald-900/30 border border-emerald-700/40 rounded-lg p-2 mb-2">
-            {success}
-          </div>
-        )}
-
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-yellow-200/90">
-            Treasury balance
-            <div className="text-lg font-semibold text-yellow-300">
-              {loading ? (
-                <span className="animate-pulse">…</span>
-              ) : (
-                `${Number(balanceEth).toFixed(4)} ETH`
-              )}
+        <div className="relative z-10">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500/30 to-yellow-500/30 flex items-center justify-center border border-orange-400/50">
+                <span className="text-lg">🎃</span>
+              </div>
+              <h2 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+                Halloween Treasury
+              </h2>
             </div>
+            {ownerAddress && (
+              <div className="bg-black/40 rounded-lg px-2 py-1 border border-orange-400/30">
+                <div className="text-xs text-orange-300 font-mono">
+                  👑 {shortAddr}
+                </div>
+              </div>
+            )}
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              disabled={loading}
-              onClick={async () => {
-                setLoading(true);
-                setError(null);
-                try {
-                  const bal = await getContractBalance();
-                  setBalanceEth(bal.eth);
-                } catch (e: any) {
-                  setError(
-                    e?.shortMessage ||
-                      e?.message ||
-                      "Failed to refresh balance."
-                  );
-                } finally {
-                  setLoading(false);
-                }
-              }}
-              className="px-3 py-2 text-xs rounded-lg bg-yellow-700/30 text-yellow-200 hover:bg-yellow-700/40 border border-yellow-600/40 disabled:opacity-60"
-            >
-              Refresh
-            </button>
-            <button
-              disabled={withdrawing || loading || Number(balanceEth) <= 0}
-              onClick={async () => {
-                setWithdrawing(true);
-                setError(null);
-                setSuccess(null);
-                try {
-                  const hash = await withdrawTreasury();
-                  setSuccess(
-                    `Withdrawal sent. Tx: ${hash.slice(0, 8)}…${hash.slice(-6)}`
-                  );
-                  // refresh balance after success
-                  const bal = await getContractBalance();
-                  setBalanceEth(bal.eth);
-                } catch (e: any) {
-                  const msg: string =
-                    e?.shortMessage || e?.message || "Withdrawal failed.";
-                  if (msg.toLowerCase().includes("user rejected")) {
-                    setError("Transaction cancelled.");
-                  } else if (
-                    msg.toLowerCase().includes("unauthorized") ||
-                    msg.toLowerCase().includes("onlyowner")
-                  ) {
-                    setError("Only the owner can withdraw.");
-                  } else {
-                    setError(msg);
+
+          {error && (
+            <div className="text-sm text-red-200 bg-gradient-to-r from-red-900/50 to-red-800/40 border border-red-500/50 rounded-xl p-3 mb-4 backdrop-blur-sm">
+              <span className="text-lg mr-2">⚠️</span>
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="text-sm text-emerald-200 bg-gradient-to-r from-emerald-900/50 to-green-800/40 border border-emerald-500/50 rounded-xl p-3 mb-4 backdrop-blur-sm">
+              <span className="text-lg mr-2">✅</span>
+              {success}
+            </div>
+          )}
+
+          <div className="flex items-center justify-between bg-black/30 rounded-2xl p-4 border border-orange-400/30">
+            <div>
+              <p className="text-sm text-purple-300/80 mb-1">
+                🏦 Treasury Balance
+              </p>
+              <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+                {loading ? (
+                  <span className="animate-pulse">🔮 Calculating...</span>
+                ) : (
+                  `${Number(balanceEth).toFixed(4)} ETH`
+                )}
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                disabled={loading}
+                onClick={async () => {
+                  setLoading(true);
+                  setError(null);
+                  try {
+                    const bal = await getContractBalance();
+                    setBalanceEth(bal.eth);
+                  } catch (e: any) {
+                    setError(
+                      e?.shortMessage ||
+                        e?.message ||
+                        "Failed to refresh balance."
+                    );
+                  } finally {
+                    setLoading(false);
                   }
-                } finally {
-                  setWithdrawing(false);
-                }
-              }}
-              className="px-4 py-2 text-xs font-semibold rounded-lg bg-yellow-500 text-slate-900 hover:bg-yellow-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(245,158,11,0.25)]"
-            >
-              {withdrawing ? "Withdrawing…" : "Withdraw"}
-            </button>
+                }}
+                className="px-4 py-2 text-sm font-medium rounded-xl bg-purple-600/30 text-purple-200 hover:bg-purple-600/50 border border-purple-400/40 disabled:opacity-60 transition-all duration-300 hover:scale-[1.02]"
+              >
+                🔄 Refresh
+              </button>
+              <button
+                disabled={withdrawing || loading || Number(balanceEth) <= 0}
+                onClick={async () => {
+                  setWithdrawing(true);
+                  setError(null);
+                  setSuccess(null);
+                  try {
+                    const hash = await withdrawTreasury();
+                    setSuccess(
+                      `Withdrawal sent! Tx: ${hash.slice(0, 8)}…${hash.slice(-6)}`
+                    );
+                    // refresh balance after success
+                    const bal = await getContractBalance();
+                    setBalanceEth(bal.eth);
+                  } catch (e: any) {
+                    const msg: string =
+                      e?.shortMessage || e?.message || "Withdrawal failed.";
+                    if (msg.toLowerCase().includes("user rejected")) {
+                      setError("Transaction cancelled.");
+                    } else if (
+                      msg.toLowerCase().includes("unauthorized") ||
+                      msg.toLowerCase().includes("onlyowner")
+                    ) {
+                      setError("Only the owner can withdraw.");
+                    } else {
+                      setError(msg);
+                    }
+                  } finally {
+                    setWithdrawing(false);
+                  }
+                }}
+                className="px-6 py-2 text-sm font-bold rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white shadow-[0_0_25px_rgba(251,146,60,0.4)] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] relative overflow-hidden group"
+              >
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative z-10">
+                  {withdrawing ? "🎃 Withdrawing..." : "💰 Withdraw"}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

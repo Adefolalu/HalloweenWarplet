@@ -13,3 +13,67 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+/* Halloween Fonts */
+.font-creepster {
+  font-family: "Creepster", cursive;
+}
+
+.font-nosifer {
+  font-family: "Nosifer", cursive;
+}
+
+.font-butcherman {
+  font-family: "Butcherman", cursive;
+}
+
+.font-eater {
+  font-family: "Eater", cursive;
+}
+
+/* Halloween Animation Styles */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes spooky-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(251, 146, 60, 0.6),
+      0 0 60px rgba(147, 51, 234, 0.3);
+  }
+}
+
+@keyframes mystical-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spooky-glow {
+  animation: spooky-glow 2s ease-in-out infinite;
+}
+
+.animate-mystical-pulse {
+  animation: mystical-pulse 2s ease-in-out infinite;
+}
