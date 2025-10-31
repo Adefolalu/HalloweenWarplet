@@ -253,7 +253,7 @@ Style: cute illustration, high-quality digital painting, soft cinematic lighting
     if (!mintSuccessData) return;
 
     try {
-      const miniAppUrl = "https://mwpt.vercel.app";
+      const miniAppUrl = "https://halloween-ten-blond.vercel.app";
       const text = `I just cutified my ${mintSuccessData.name} for Halloween! 🎃✨\n\nCutify your Warplet now on Halloween Warplets!`;
 
       await sdk.actions.composeCast({
