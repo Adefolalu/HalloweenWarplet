@@ -1,18 +1,25 @@
 {
-  "accountAssociation": {
-    "header": "eyJmaWQiOjIzOTM5NiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDRENEU1MjIzODRkNkYxMDkwYkZENEM0NTI3YTdkNTJERmQyMGJDYTMifQ",
-    "payload": "eyJkb21haW4iOiJtd3B0LnZlcmNlbC5hcHAifQ",
-    "signature": "FgRp5mTPPJM8kT93f711HdK5GpPdDKSmwrtcP3Ql4bcYNJC6JlQNZRnj2aAMx9/2jmPdimgimgq5OsntuEmU+Bw="
-  },
   "frame": {
+    "name": "Halloween-warplet",
     "version": "1",
-    "name": "Mutant Warplets",
-    "iconUrl": "https://mwpt.vercel.app/logo.jpg",
-    "homeUrl": "https://mwpt.vercel.app",
-    "imageUrl": "https://mwpt.vercel.app/splash.jpg",
-    "buttonTitle": "Cutify your Warplet",
-    "splashImageUrl": "https://mwpt.vercel.app/splash.jpg",
-    "splashBackgroundColor": "#2596be",
-    "webhookUrl": "https://mwpt.vercel.app/api/webhook"
+    "iconUrl": "https://halloween-ten-blond.vercel.app/logo.jpg",
+    "homeUrl": "https://halloween-ten-blond.vercel.app",
+    "imageUrl": "https://halloween-ten-blond.vercel.app/image.jpg",
+    "buttonTitle": "Cutify my warplet",
+    "splashImageUrl": "https://halloween-ten-blond.vercel.app/image.jpg",
+    "splashBackgroundColor": "#feaa01",
+    "webhookUrl": "https://api.neynar.com/f/app/b7c74c9d-420f-453b-a556-e578c05cd72b/event",
+    "subtitle": "CUTIFY MY WARPLET",
+    "description": "Cutify my warplets for halloween",
+    "primaryCategory": "finance",
+    "tags": ["warplets", "halloween", "mutants", "nft", "art"],
+    "heroImageUrl": "https://halloween-ten-blond.vercel.app/hero.jpg",
+    "tagline": "Cutify my warplet",
+    "ogTitle": "Halloween-warplets"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjIzOTM5NiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweGE5OTIwMUE4RkRERDQzQTY1YjQyRTEyNTY2MGQwYzkwNDNBMDhjMjAifQ",
+    "payload": "eyJkb21haW4iOiJoYWxsb3dlZW4tdGVuLWJsb25kLnZlcmNlbC5hcHAifQ",
+    "signature": "Yictkv/tf6uQg8fvdlinWtDO2DTTWINNHCR8eVPgPipsGBPyRYf5eI2G33hLS/hhIl9BjRIb5+3J5KbkVQpxQBw="
   }
 }
