@@ -1,8 +1,8 @@
-# 🧬 Mutant Warpletss - NFT Mutation Project
+# 🧬 halloweenrpletss - NFT Mutation Project
 
 ## Overview
 
-Transform your **Warplet** into a **Mutant Warplets**! This project allows Warplet holders to Cutify their NFTs using AI, creating unique variations while maintaining on-chain provenance.
+Transform your **Warplet** into a **halloweenrplets**! This project allows Warplet holders to Cutify their NFTs using AI, creating unique variations while maintaining on-chain provenance.
 
 **Original Collection:** The Warplets (`0x699727F9E01A822EFdcf7333073f0461e5914b4E` on Base)
 
