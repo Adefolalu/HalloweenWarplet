@@ -272,53 +272,87 @@ Style: cute illustration, high-quality digital painting, soft cinematic lighting
 
   return (
     <div className="relative">
-      {/* Elite precision card with #2596be theme and dark background */}
-      <div className="relative bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.25)] overflow-hidden border border-[#2596be]/30">
-        {/* Subtle top accent line */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#2596be] to-transparent"></div>
+      {/* Halloween Spooky Card */}
+      <div className="relative bg-gradient-to-br from-purple-900/80 via-indigo-900/70 to-black/90 backdrop-blur-xl rounded-3xl shadow-[0_0_40px_rgba(147,51,234,0.4)] overflow-hidden border-2 border-orange-400/40">
+        {/* Magical Halloween Accent */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
+
+        {/* Floating Halloween Decorations */}
+        <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
+          <div className="absolute top-4 left-6 text-lg animate-float">🕯️</div>
+          <div
+            className="absolute top-8 right-4 text-sm animate-float"
+            style={{ animationDelay: "1s" }}
+          >
+            ✨
+          </div>
+          <div
+            className="absolute bottom-6 left-4 text-lg animate-float"
+            style={{ animationDelay: "0.5s" }}
+          >
+            🔮
+          </div>
+        </div>
 
         {/* Image container with fixed aspect ratio */}
         <div className="relative w-full" style={{ paddingBottom: "100%" }}>
           <div className="absolute inset-0 flex items-center justify-center p-8">
             {status !== "ready" || !result ? (
-              <div className="w-full h-full bg-gradient-to-br from-slate-700/50 via-slate-800/50 to-[#1a5f7a]/50 rounded-2xl flex items-center justify-center border border-[#2596be]/20 backdrop-blur-sm">
-                <div className="text-center px-4">
+              <div className="w-full h-full bg-gradient-to-br from-purple-800/60 via-indigo-800/50 to-black/70 rounded-2xl flex items-center justify-center border-2 border-orange-400/30 backdrop-blur-sm relative overflow-hidden">
+                {/* Magical Background Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-purple-500/5 to-orange-500/5 animate-pulse"></div>
+
+                <div className="text-center px-4 relative z-10">
                   {status === "error" ? (
                     <>
-                      <div className="w-16 h-16 mx-auto mb-4 bg-red-500/10 rounded-full flex items-center justify-center border-2 border-red-500/30">
-                        <svg
-                          className="w-8 h-8 text-red-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                          />
-                        </svg>
+                      <div className="w-20 h-20 mx-auto mb-4 bg-red-900/40 rounded-full flex items-center justify-center border-2 border-red-400/50 shadow-[0_0_20px_rgba(239,68,68,0.3)] relative">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/20 to-orange-500/20 animate-pulse"></div>
+                        <div className="text-3xl animate-bounce">💀</div>
                       </div>
-                      <p className="text-sm font-semibold text-slate-300 mb-2">
-                        Cutify Failed
+                      <p className="text-lg font-nosifer font-bold text-red-300 mb-2">
+                        Spell Failed!
                       </p>
-                      <p className="text-xs text-slate-400 mb-4">{error}</p>
+                      <p className="text-sm text-purple-200/90 mb-6">{error}</p>
                       <button
                         onClick={handleRetry}
-                        className="px-4 py-2 bg-[#2596be] hover:bg-[#1d7a9f] text-white text-xs font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                        className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-sm font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(251,146,60,0.4)]"
                       >
-                        Try Again
+                        🔄 Cast Again
                       </button>
                     </>
                   ) : (
                     <>
-                      <div className="relative inline-block mb-4">
-                        <div className="w-16 h-16 border-[3px] border-[#2596be]/30 rounded-full absolute"></div>
-                        <div className="w-16 h-16 border-[3px] border-[#2596be] border-t-transparent rounded-full animate-spin"></div>
+                      {/* Halloween Cauldron Loading Animation */}
+                      <div className="relative inline-block mb-6">
+                        <div className="w-20 h-20 relative">
+                          {/* Cauldron */}
+                          <div className="text-4xl animate-bounce">🧙‍♀️</div>
+                          {/* Magic Circle */}
+                          <div className="absolute inset-0 w-20 h-20 border-4 border-orange-400/30 rounded-full"></div>
+                          <div className="absolute inset-0 w-20 h-20 border-4 border-orange-400 border-t-transparent rounded-full animate-spin"></div>
+                          {/* Sparkles */}
+                          <div className="absolute -top-2 -left-2 text-sm animate-ping">
+                            ✨
+                          </div>
+                          <div
+                            className="absolute -top-2 -right-2 text-sm animate-ping"
+                            style={{ animationDelay: "0.5s" }}
+                          >
+                            ⭐
+                          </div>
+                          <div
+                            className="absolute -bottom-2 left-1/2 text-sm animate-ping"
+                            style={{ animationDelay: "1s" }}
+                          >
+                            🌟
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-sm font-semibold text-[#2596be] tracking-wide">
-                        MUTATING...
+                      <p className="text-xl font-creepster font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-2 filter drop-shadow-[0_0_10px_rgba(251,146,60,0.8)]">
+                        🎃 CUTIFYING... ✨
+                      </p>
+                      <p className="text-sm font-butcherman text-purple-300/90">
+                        Brewing Halloween magic... 🧪
                       </p>
                     </>
                   )}
@@ -328,11 +362,33 @@ Style: cute illustration, high-quality digital painting, soft cinematic lighting
               <div className="relative w-full h-full group">
                 <img
                   src={result.mutatedImageUrl}
-                  alt="Mutated NFT"
-                  className="w-full h-full object-cover rounded-2xl shadow-[0_8px_24px_rgba(37,150,190,0.2)] ring-1 ring-[#2596be]/20"
+                  alt="Cutified Halloween Warplet"
+                  className="w-full h-full object-cover rounded-2xl shadow-[0_0_30px_rgba(251,146,60,0.3)] ring-2 ring-orange-400/40"
                 />
-                {/* Elegant hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2596be]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                {/* Magical Halloween Hover Effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-400/20 via-purple-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+
+                {/* Floating Magic Sparkles on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div
+                    className="absolute top-4 left-4 text-lg animate-ping"
+                    style={{ animationDelay: "0s" }}
+                  >
+                    ✨
+                  </div>
+                  <div
+                    className="absolute top-6 right-6 text-lg animate-ping"
+                    style={{ animationDelay: "0.3s" }}
+                  >
+                    ⭐
+                  </div>
+                  <div
+                    className="absolute bottom-8 left-8 text-lg animate-ping"
+                    style={{ animationDelay: "0.6s" }}
+                  >
+                    🌟
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -385,57 +441,65 @@ Style: cute illustration, high-quality digital painting, soft cinematic lighting
                       clipRule="evenodd"
                     />
                   </svg>
-                  MINT Custome
+                  🎃 MINT COSTUME
                 </span>
-                <span className="text-[10px] font-medium opacity-90 tracking-wide">
+                <span className="text-[10px] font-butcherman font-medium opacity-90 tracking-wide">
                   {mutationFee ? formatEther(mutationFee) : "0.00037"} ETH
                 </span>
               </span>
             ) : (
-              <span className="uppercase tracking-wider text-xs">
-                Cutifying...
+              <span className="font-butcherman uppercase tracking-wider text-sm">
+                🎭 Preparing Costume...
               </span>
             )}
           </button>
         </div>
       </div>
 
-      {/* Success Modal */}
+      {/* Halloween Success Modal */}
       {showSuccessModal && mintSuccessData && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-300">
-          <div className="bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-[#1a5f7a]/90 rounded-3xl shadow-[0_8px_32px_rgba(37,150,190,0.4)] max-w-md w-full border border-[#2596be]/30 overflow-hidden">
-            {/* Top accent */}
-            <div className="h-[2px] bg-gradient-to-r from-transparent via-[#2596be] to-transparent"></div>
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-in fade-in duration-300">
+          <div className="bg-gradient-to-br from-purple-900/90 via-indigo-900/80 to-black/95 rounded-3xl shadow-[0_0_50px_rgba(147,51,234,0.6)] max-w-md w-full border-2 border-orange-400/50 overflow-hidden relative">
+            {/* Magical Top Accent */}
+            <div className="h-[3px] bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
+
+            {/* Floating Celebration Elements */}
+            <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+              <div className="absolute top-6 left-8 text-lg animate-bounce">
+                🎉
+              </div>
+              <div
+                className="absolute top-12 right-6 text-lg animate-bounce"
+                style={{ animationDelay: "0.5s" }}
+              >
+                ✨
+              </div>
+              <div
+                className="absolute bottom-8 left-6 text-lg animate-bounce"
+                style={{ animationDelay: "1s" }}
+              >
+                🎊
+              </div>
+            </div>
 
             {/* Content */}
-            <div className="p-6 text-center">
-              {/* Success Icon */}
-              <div className="w-16 h-16 mx-auto mb-4 bg-[#2596be]/20 rounded-full flex items-center justify-center border-2 border-[#2596be]">
-                <svg
-                  className="w-8 h-8 text-[#2596be]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+            <div className="p-8 text-center relative z-10">
+              {/* Halloween Success Celebration */}
+              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-orange-500/20 to-purple-500/20 rounded-full flex items-center justify-center border-2 border-orange-400/60 shadow-[0_0_30px_rgba(251,146,60,0.4)] relative">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/20 via-purple-400/20 to-orange-400/20 animate-pulse"></div>
+                <div className="text-5xl animate-bounce">🎃</div>
               </div>
 
-              <h2 className="text-2xl font-bold text-[#2596be] mb-2">
-                Mint Successful!
+              <h2 className="text-3xl font-creepster font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300 mb-3 filter drop-shadow-[0_0_15px_rgba(251,146,60,0.8)]">
+                Costume Created! 🎭
               </h2>
 
-              <p className="text-sm text-slate-300 mb-4">
+              <p className="text-lg font-butcherman text-orange-200/90 mb-6">
                 {mintSuccessData.name}
               </p>
 
-              {/* Minted Image */}
-              <div className="mb-6 rounded-2xl overflow-hidden border border-[#2596be]/30 shadow-lg">
+              {/* Halloween Cutified Image */}
+              <div className="mb-6 rounded-2xl overflow-hidden border-2 border-orange-400/50 shadow-[0_0_30px_rgba(251,146,60,0.3)] relative group">
                 <img
                   src={mintSuccessData.imageUri}
                   alt={mintSuccessData.name}
@@ -448,46 +512,51 @@ Style: cute illustration, high-quality digital painting, soft cinematic lighting
                     }
                   }}
                 />
+                {/* Magical Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              {/* Transaction info */}
-              <div className="bg-slate-800/50 rounded-xl p-3 mb-4 text-xs">
-                <p className="text-slate-400 mb-1">Transaction Hash:</p>
-                <p className="text-[#2596be] font-mono break-all">
-                  {mintSuccessData.hash.slice(0, 10)}...
-                  {mintSuccessData.hash.slice(-8)}
+              {/* Magical Transaction Scroll */}
+              <div className="bg-black/60 rounded-xl p-4 mb-6 text-sm border border-orange-400/30 relative">
+                <div className="absolute top-2 right-2 text-lg">📜</div>
+                <p className="text-orange-300/90 mb-2 font-butcherman">
+                  Spell Receipt:
+                </p>
+                <p className="text-yellow-300 font-mono break-all text-xs bg-black/40 p-2 rounded">
+                  {mintSuccessData.hash.slice(0, 12)}...
+                  {mintSuccessData.hash.slice(-10)}
                 </p>
                 {mintSuccessData.tokenId !== undefined && (
                   <>
-                    <p className="text-slate-400 mt-2 mb-1">Token ID:</p>
-                    <p className="text-[#2596be] font-mono">
+                    <p className="text-orange-300/90 mt-3 mb-2 font-butcherman">
+                      Costume ID:
+                    </p>
+                    <p className="text-yellow-300 font-mono text-lg">
                       #{mintSuccessData.tokenId.toString()}
                     </p>
                   </>
                 )}
               </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-2">
+              {/* Halloween Action Buttons */}
+              <div className="space-y-3">
                 <button
                   onClick={handleShare}
-                  className="w-full py-3 rounded-xl font-semibold text-sm text-white bg-[#2596be] hover:bg-[#1d7a9f] shadow-[0_4px_16px_rgba(37,150,190,0.3)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 shadow-[0_0_25px_rgba(251,146,60,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden group"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-                  </svg>
-                  Share on Farcaster
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <span className="text-lg">🎃</span>
+                  <span className="font-butcherman relative z-10">
+                    Share Halloween Magic
+                  </span>
+                  <span className="text-lg">✨</span>
                 </button>
 
                 <button
                   onClick={handleCloseModal}
-                  className="w-full py-2.5 rounded-xl font-medium text-sm text-[#2596be] bg-slate-700/50 hover:bg-slate-700 border border-[#2596be]/30 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                  className="w-full py-3 rounded-xl font-medium text-sm text-orange-300 bg-black/60 hover:bg-black/80 border border-orange-400/40 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] font-butcherman"
                 >
-                  Close
+                  Return to Cauldron 🧙‍♀️
                 </button>
               </div>
             </div>
